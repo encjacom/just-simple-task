@@ -1,0 +1,4 @@
+FROM nginx
+
+COPY ./websites/nginx1  /home/projects/nginx1/actual
+COPY ./websites/nginx2  /home/projects/nginx2/actual

@@ -1,0 +1,9 @@
+---
+- name: Prepare environment and run project
+  hosts: local_host
+  become: yes
+  roles:
+    - hosts_setup
+    - apt_dependencies
+    - docker_installation
+    - docker_compose_setup

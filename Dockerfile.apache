@@ -1,0 +1,6 @@
+FROM httpd
+
+RUN sed -i '/#Include conf\/extra\/httpd-default\.conf/a\\nInclude conf\/extra\/apache1\.zadanie\.io\.conf\nInclude conf\/extra\/apache2\.zadanie\.io\.conf' /usr/local/apache2/conf/httpd.conf
+
+COPY ./websites/apache1  /home/projects/apache1/actual
+COPY ./websites/apache2  /home/projects/apache2/actual

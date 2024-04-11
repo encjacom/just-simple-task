@@ -1,0 +1,13 @@
+---
+- name: Update apt cache before installation of dependencies
+  apt:
+    update_cache: yes
+- name: Install dependencies via apt
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - software-properties-common
+    state: present

@@ -1,0 +1,25 @@
+services:
+    docker-nginx1:
+        build:
+            context: ./
+            dockerfile: Dockerfile.nginx
+        image: my-nginx
+        volumes:
+            - './configuration/nginx/nginx1.zadanie.io.conf:/etc/nginx/conf.d/nginx1.zadanie.io.conf'
+            - './configuration/nginx/nginx2.zadanie.io.conf:/etc/nginx/conf.d/nginx2.zadanie.io.conf'
+            - './logs/nginx1:/home/project/nginx1/nginx_log'
+            - './logs/nginx2:/home/project/nginx2/nginx_log'
+        ports:
+            - 81:80
+    docker-apache1:
+        build:
+            context: ./
+            dockerfile: Dockerfile.apache
+        image: my-apache
+        volumes:
+            - './configuration/apache2/apache1.zadanie.io.conf:/usr/local/apache2/conf/extra/apache1.zadanie.io.conf'
+            - './configuration/apache2/apache2.zadanie.io.conf:/usr/local/apache2/conf/extra/apache2.zadanie.io.conf'
+            - './logs/apache1:/home/projects/apache1/apache_log'
+            - './logs/apache2:/home/projects/apache2/apache_log'
+        ports:
+            - 80:80
