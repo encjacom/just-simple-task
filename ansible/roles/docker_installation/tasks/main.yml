@@ -1,0 +1,24 @@
+---
+- name: Add Docker's official GPG key
+  apt_key:
+    url: 'https://download.docker.com/linux/ubuntu/gpg'
+    state: present
+
+- name: Add Docker's APT repository
+  apt_repository:
+    repo: deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }}] https://download.docker.com/{{ ansible_system | lower }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+    state: present
+
+- name: Update apt cache before installation of Docker
+  apt:
+    update_cache: yes
+
+- name: Install Docker
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
